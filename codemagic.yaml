@@ -17,6 +17,11 @@ workflows:
           zipStorePath=wrapper/dists
           GRADLE
 
+      - name: Generate missing resource files
+        script: |
+          cd reels_counter
+          flutter create --project-name reels_counter --org com.reelscounter . 2>/dev/null || true
+
       - name: Fix build.gradle
         script: |
           cat > reels_counter/android/app/build.gradle << 'BUILDGRADLE'

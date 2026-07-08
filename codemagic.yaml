@@ -26,6 +26,11 @@ workflows:
         script: |
           sed -i '' 's/vibration: \^1.8.4/vibration: ^2.0.0/' reels_counter/pubspec.yaml
 
+      - name: Fix OverlayService.kt val clash
+        script: |
+          sed -i '' 's/val background = GradientDrawable/val bgDrawable = GradientDrawable/' reels_counter/android/app/src/main/kotlin/com/reelscounter/app/OverlayService.kt
+          sed -i '' 's/background = background/background = bgDrawable/' reels_counter/android/app/src/main/kotlin/com/reelscounter/app/OverlayService.kt
+
       - name: Fix build.gradle
         script: |
           cat > reels_counter/android/app/build.gradle << 'BUILDGRADLE'

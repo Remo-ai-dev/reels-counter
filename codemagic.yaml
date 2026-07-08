@@ -9,6 +9,6 @@ workflows:
       - name: Get Flutter packages
         script: cd reels_counter && flutter pub get
       - name: Build APK
-        script: cd reels_counter && flutter build apk --release --no-shrink
+        script: cd reels_counter && flutter build apk --release --no-shrink --android-skip-build-dependency-validation
     artifacts:
       - reels_counter/build/app/outputs/flutter-apk/app-release.apk

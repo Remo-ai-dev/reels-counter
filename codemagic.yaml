@@ -6,20 +6,19 @@ workflows:
       flutter: stable
       java: 17
     scripts:
-      - name: Fix build.gradle
+      - name: Fix Gradle wrapper
         script: |
-          cd reels_counter/android
-          # Update gradle wrapper to supported version
-          mkdir -p gradle/wrapper
-          cat > gradle/wrapper/gradle-wrapper.properties << 'GRADLE'
+          mkdir -p reels_counter/android/gradle/wrapper
+          cat > reels_counter/android/gradle/wrapper/gradle-wrapper.properties << GRADLE
           distributionBase=GRADLE_USER_HOME
           distributionPath=wrapper/dists
           distributionUrl=https\://services.gradle.org/distributions/gradle-8.7-bin.zip
           zipStoreBase=GRADLE_USER_HOME
           zipStorePath=wrapper/dists
           GRADLE
-          # Fix shrinkResources issue in app/build.gradle
-          sed -i 's/minifyEnabled false/minifyEnabled true/' app/build.gradle
+      - name: Fix build.gradle
+        script: |
+          sed -i '' 's/minifyEnabled false/minifyEnabled true/' reels_counter/android/app/build.gradle
       - name: Get Flutter packages
         script: cd reels_counter && flutter pub get
       - name: Build APK

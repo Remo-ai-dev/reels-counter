@@ -22,6 +22,10 @@ workflows:
           cd reels_counter
           flutter create --project-name reels_counter --org com.reelscounter . 2>/dev/null || true
 
+      - name: Fix pubspec - upgrade vibration package
+        script: |
+          sed -i '' 's/vibration: \^1.8.4/vibration: ^2.0.0/' reels_counter/pubspec.yaml
+
       - name: Fix build.gradle
         script: |
           cat > reels_counter/android/app/build.gradle << 'BUILDGRADLE'

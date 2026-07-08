@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reels Counter</string>
+    <string name="accessibility_service_description">Counts vertical reel/short-video swipes. Does not read, record, or store any screen content or video — only counts scroll gestures.</string>
+</resources>
